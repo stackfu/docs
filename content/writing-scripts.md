@@ -11,6 +11,7 @@ Each script has a script.yml descriptor and two subfolders: config and executabl
 Here's a typical folder tree for a script:
 
 	my_script/
+		script.yml
 		config/
 			01-controls.yml
 			02-requirements.yml
@@ -18,7 +19,6 @@ Here's a typical folder tree for a script:
 			04-validations.yml
 		executables/
 			install_my_script.sh.erb
-		script.yml
 	
 ## The script descriptor
 
@@ -114,7 +114,7 @@ Here are listed all the possible validations:
     </tr> 
     <tr> 
       <td class="validation">rangelength</td> 
-      <td class="description">Array with min and max length of input</td> 
+      <td class="description">Array with min and max length of input<sup id="fnref:rangeobs"><a href="#fn:rangeobs" rel="footnote">3</a></sup></td> 
       <td class="example"><code>rangelength: [8, 20]</code></td> 
     </tr> 
     <tr> 
@@ -145,17 +145,12 @@ Here are listed all the possible validations:
     <tr> 
       <td class="validation">date</td> 
       <td class="description">Requires a date<sup id="fnref:dateobs"><a href="#fn:dateobs" rel="footnote">1</a></sup></td> 
-      <td class="example"><code>url: true</code></td> 
+      <td class="example"><code>date: true</code></td> 
     </tr> 
     <tr> 
       <td class="validation">dateISO</td> 
       <td class="description">Requires an ISO formatted date</td> 
-      <td class="example"><code>url: true</code></td> 
-    </tr> 
-    <tr> 
-      <td class="validation">dateISO</td> 
-      <td class="description">Requires an ISO formatted date</td> 
-      <td class="example"><code>url: true</code></td> 
+      <td class="example"><code>dateISO: true</code></td> 
     </tr> 
     <tr> 
       <td class="validation">number</td> 
@@ -180,9 +175,48 @@ Here are listed all the possible validations:
   </tbody> 
 </table>
 
-a[^dateobs]
-a[^equalnotes]
-
 [^dateobs]: Only the format must be valid, not the actual date, e.g. `30/30/2008` is a valid date. 	
 
 [^equalnotes]: The attribute of `equalTo` must be a CSS selector (like jQuery), and our controls ids are always prepended with `params_`, so a control called `path_name` becomes `params_path_name`.
+
+[^rangeobs]: Ranges are inclusive, meaning that `[1-9]` will match 1, 2, 3, 4, 5, 6, 7, 8 and 9.
+
+### `02-requirements.yml`
+
+Before installing the script, StackFu engine can perform some checks on the environment, to make sure the system meets the preconditions specified in the Requirements section.
+
+The requirements descriptor file has the following format:
+
+	--- 
+	requirements: 
+	- data: /usr/bin/apt-get
+	  type: ExecutableExists
+	- data: /var/data/some_file.dat
+	  type: FileExists
+
+Each entry has a `type` and a `data` fields. On the example, two checks will be performed: that the file `/usr/bin/apt-get` exists and is executable and the the file `/var/data/some_file.dat` also exists.
+
+Here are the types of checks the engine can perform:
+
+<%= table(
+	:headers => ["Type", "What it checks"],
+	:contents => <<-EOS
+FileExists    | a given file exists			     
+SymlinkExists | a given symlink exists            
+DirExists     | a given directory exits           
+ProcessExists | a process is runnning             
+RubyCanLoad   | if ruby can load a given lib      
+RubyGem       | if a given ruby gem is installed  
+EOS
+) %>
+
+### `03-executions.yml`
+
+### `04-validations.yml`
+
+
+
+ [^dateobs]
+ [^equalnotes]
+ [^rangeobs]
+

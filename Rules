@@ -22,7 +22,7 @@ end
 compile '*' do
   filter :erb
   filter :kramdown
-  layout 'application'
+  layout 'default'
 end
 
 # route '/stylesheets/sass/*' do
