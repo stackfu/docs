@@ -1,0 +1,36 @@
+div#container div.code {
+  background-color: #232323;
+  border: 1px solid black;
+  font-family: 'Monaco', 'Courier New', 'Terminal', monospace;
+  color: #E6E0DB;
+  margin: 10px 0px 10px 0px;
+  overflow: auto;
+  font-size: 1.1em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+div#container div.code pre {
+  margin: -15px 0px 10px 0px;
+  padding: 0px;
+}
+
+
+.an { color:#E7BE69 }                      /* html attribute */
+.c  { color:#BC9358; font-style: italic; } /* comment */
+.ch { color:#509E4F }                      /* escaped character */
+.cl { color:#FFF }                         /* class */
+.co { color:#FFF }                         /* constant */
+.fl { color:#A4C260 }                      /* float */
+.fu { color:#FFC56D }                      /* function */
+.gv { color:#D0CFFE }                      /* global variable */
+.i  { color:#A4C260 }                      /* integer */
+.il { background:#151515 }                 /* inline code */
+.iv { color:#D0CFFE }                      /* instance variable */
+.pp { color:#E7BE69 }                      /* doctype */
+.r  { color:#CB7832 }                      /* keyword */
+.rx { color:#A4C260 }                      /* regex */
+.s  { color:#A4C260 }                      /* string */
+.sy { color:#6C9CBD }                      /* symbol */
+.ta { color:#E7BE69 }                      /* html tag */
+.pc { color:#6C9CBD }                      /* boolean */
