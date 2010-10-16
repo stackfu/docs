@@ -56,6 +56,7 @@ title: Controls
   - **label:** a label for the control 	    
   - **required:** indicates whether the control must have a value. Accepted values: `true` or `false`.	    
   - **validations:** a list of validations to apply to this control. The format of this field is always `type: value`.     
+  - **validation_messages:** allows setting error message for each validations in `validation`. Format is `type: message`.     
 
 
 %h3 Validations
@@ -63,7 +64,7 @@ title: Controls
 %p Here are listed all the possible validations:
 
 :erb
-  <table> 
+  <table class='items'> 
     <thead> 
       <tr> 
         <th class="validation">Validation</th> 
