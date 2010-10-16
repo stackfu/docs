@@ -1,0 +1,42 @@
+--- 
+title: Requirements
+---
+
+%h2 Requirements
+
+%p
+  Before installing the script, StackFu engine can perform some checks 
+  on the environment, to make sure the system meets the preconditions 
+  specified in the Requirements section.
+
+%p
+  The requirements descriptor file has the following format:
+
+%pre
+  %code
+    :preserve
+      --- 
+      requirements: 
+      - data: /usr/bin/apt-get
+        type: ExecutableExists
+      - data: /var/data/some_file.dat
+        type: FileExists
+
+%p
+  Each entry has a `type` and a `data` fields. On the example, two checks will be 
+  performed: that the file `/usr/bin/apt-get` exists and is executable and the the 
+  file `/var/data/some_file.dat` also exists.
+
+%p Here are the types of checks the engine can perform:
+
+<%= table(
+	:headers => ["Type", "Will check"],
+	:contents => <<-EOS
+FileExists    | that a given file exists			     
+SymlinkExists | that a given symlink exists            
+DirExists     | that a given directory exits           
+ProcessExists | that a process is runnning             
+RubyCanLoad   | if ruby can load a given lib      
+RubyGem       | if a given ruby gem is installed  
+EOS
+) %>

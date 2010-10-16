@@ -9,6 +9,10 @@ include Nanoc3::Helpers::Tagging
 include Nanoc3::Helpers::Text
 include Nanoc3::Helpers::XMLSitemap
 
+def link(label, url=nil)
+  link_to label, url || "/#{label.downcase.gsub(" ", "_")}/"
+end
+
 def image_tag(url, options = {})
   html =  "<img src=\"/images/#{url}\" "  
   html += options[:title] ? "title=\"#{options[:title]}\" " : ""

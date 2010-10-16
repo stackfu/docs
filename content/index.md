@@ -1,6 +1,0 @@
---- 
-title: Index
----
-
-## Getting Started
-
