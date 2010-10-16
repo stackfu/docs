@@ -73,6 +73,7 @@ title: Quick Start
   our script doesn't do anything yet. Let's fix this.
   
 .hint
+  %b HINT: 
   The <code>create</code> command can optionally take parameters. Those
   parameters can help you building the script folder and files to meet
   your needs.
@@ -208,4 +209,40 @@ title: Quick Start
   
 %p
   To avoid this, let's use a validation on that field. One of the available validations
-  is called <code>matches</code> and it 
+  is called <code>matches</code> and it will check if the value entered on a field
+  matches a given Regular Expression.
+
+%p
+  Another problem is that, unless marked as required, the field is considered optional,
+  so we have to mark it as <code>required</code> as well.
+  
+%p
+  Open <code>01-controls.yml</code> again, and add the changes below:
+  
+  %pre
+    %code
+      :preserve
+        controls:
+        - name: ports
+          label: Ports you want to leave open
+          type: Textbox
+          required: true
+          validations: 
+            matches: ^(\d+,)*\d+$
+          validation_messages: 
+            matches: must be port numbers, separated by a comma (ex. 22,80,8080)
+  
+%p
+  With this we can make sure that the field will be always entered and that it will
+  match the format we expect.
+  
+%p
+  Here's what happens now, when the user tries to submit a deployment of our script
+  with the field empty or misformatted:
+  
+  %img{ :src => "/images/script-tutorial-02.png" }
+  
+  %img{ :src => "/images/script-tutorial-03.png" }
+  
+%p
+  For more detailed information about writing scripts, check the Writing Scripts section.
