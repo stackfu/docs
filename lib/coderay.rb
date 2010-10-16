@@ -11,5 +11,5 @@ def code(*args, &block)
 end
 
 def codify(str, lang)
-  %{<pre><code class="#{lang}">#{CodeRay.scan(str, lang).html}</code></pre>}
+  %{<div class='CodeRay'><pre><code class="#{lang}">#{CodeRay.scan(str, lang).html}</code></pre></div>}
 end

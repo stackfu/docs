@@ -1,0 +1,68 @@
+#deployment
+  margin: 20px 5px 25px 0px
+  .name
+    background-color: #fbfbf9
+    border-bottom: 3px solid #ececea
+    h2
+      font-size: 1.2em
+      padding: 5px 0px 0px 0px
+    padding: 7px 0px 7px 15px
+    a:link, a:visited
+      color: #1469a2
+      font-weight: bold
+    a:hover
+      color: #2b2b2b
+  .description
+    padding: 10px 10px 10px 10px
+    font-size: 0.8em
+    display: none
+  .status
+    padding: 15px 10px 10px 10px
+    color: #146390
+    font-size: 0.8em
+    text-align: center
+    font-size: 1.2em
+    margin: 10px 0px 0px 0px
+    display: none
+  .status.running
+    border-bottom: 3px solid #009eff 
+    background-color: #d3efff
+    color: #009eff
+  .status.finished
+    border-bottom: 3px solid #14a600 
+    background-color: #d3ffd8
+    color: #14a600
+  .status.failed
+    border-bottom: 3px solid #ff4848
+    background-color: #ffd3d3
+    color: #ff4848
+  .status.queued
+    border-bottom: 3px solid #bcb926 
+    background-color: #fffed3
+    color: #bcb926
+  .logs
+    padding: 10px
+    background-color: #000000
+    color: #ffffff
+    overflow: auto
+    height: 250px
+    display: none
+    .scroller
+      margin-top: 5px
+  .logs_spinner
+    margin: 10px
+    text-align: center
+    img
+      margin: 5px
+    display: none
+  .message
+    margin: 10px 0px 0px 0px
+    padding: 10px
+    display: none
+    line-height: 150%    
+  .message.error
+    background-color: #ffd3d3
+    color: #ff4848
+  .message.success
+    background-color: #d3ffd8
+    color: #14a600

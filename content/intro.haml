@@ -1,0 +1,52 @@
+--- 
+title: Introduction
+---
+%h2 What is a Script?
+
+%p
+  StackFu scripts are composed by four different components: controls, requirements, 
+  executions and validations. One script is represented by a folder on the file system 
+  containing YAML and ERB files.
+
+%p
+  Each script has a script.yml descriptor and two subfolders: config and executables. 
+  The config folder contains four configuration files: 01-controls.yml, 02-requirements.yml, 
+  03-executions.yml and 04-validations.yml.
+
+%p 
+  Here's a typical folder tree for a script:
+
+%pre
+  %code
+    :preserve
+      my_script/
+        script.yml
+        config/
+          01-controls.yml
+          02-requirements.yml
+          03-executions.yml
+          04-validations.yml
+        executables/
+          install_my_script.sh.erb
+
+%h2 The script descriptor
+
+%p
+  The file script.yml describes your script. It has attributes like name, description and tags. Here's an example:
+
+%pre
+  %code
+    :preserve
+      ---
+      type: script
+      name: my_script
+      description: Sets up my Ubuntu environment
+      tags: [dotfiles, ubuntu]
+
+%h2 Attributes in script.yml
+
+:markdown
+  - **type:** should always contain the string "script"		
+  - **name:** the name of your script -- try to separate words by either underscore (_) or a dash (-)	
+  - **description:** a longer explanation of what your script does	
+  - **tags:** comma-separated tags for your script 	

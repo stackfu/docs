@@ -10,7 +10,14 @@
 #   item, use the pattern "/about/*/"; "/about/*" will also select the parent,
 #   because "*" matches zero or more characters.
 
+compile '/stylesheets/sass/*' do
+  filter :sass
+end
+
 compile '/stylesheets/*' do
+end
+
+compile '/images/*' do
 end
 
 compile '/docs/*' do
@@ -21,14 +28,14 @@ end
 
 compile '*' do
   filter :erb
-  filter :kramdown
+  filter :haml
   layout 'default'
 end
 
-# route '/stylesheets/sass/*' do
-#   item.identifier.chop.gsub('/sass','') + '.css'
-# end
-# 
+route '/stylesheets/sass/*' do
+  item.identifier.chop.gsub('/sass','') + '.css'
+end
+
 route '/stylesheets/*' do
   item.identifier.chop + '.css'
 end
@@ -37,8 +44,12 @@ end
 #   item.identifier.chop + '.js'
 # end
 
+route '/images/*' do
+  item.identifier.chop + '.' + item[:extension]
+end
+
 route '*' do
   item.identifier + 'index.html'
 end
 
-layout '*', :erb
+layout '*', :haml

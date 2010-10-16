@@ -1,0 +1,272 @@
+.scripts
+  width: 500px
+  float: left
+  .no-search-results
+    text-align: center
+    padding: 25px
+.script
+  width: 500px
+  margin: 20px 5px 25px 0px
+  .name
+    background-color: #fbfbf9
+    border-bottom: 3px solid #ececea
+    h2
+      font-size: 1em
+    padding: 7px 0px 7px 15px
+    a:link, a:visited
+      color: #1469a2
+      font-weight: bold
+    a:hover
+      color: #2b2b2b
+  .description
+    padding: 5px 10px 10px 10px
+    font-size: 0.8em
+  .status
+    padding: 0px 0px 0px 10px
+    color: #146390
+    font-size: 0.8em
+    span
+      font-weight: bold
+
+#script
+  float: left
+  width: 500px
+  margin: 10px 0px 0px 0px
+    
+  .description
+    padding: 0px
+    margin: 0px
+    
+  .heading
+    background-color: #fbfbf9
+    border-bottom: 3px solid #ececea
+    font-size: 1.1em
+    padding: 10px 10px 7px 10px
+    margin: 5px 0px 5px 0px
+    
+  .body
+    .body
+      padding: 10px
+      font-size: 0.9em
+      
+      li
+        margin: 0px 0px 5px 0px
+    .code
+      display: none
+
+    span.zoom
+      cursor: pointer
+    
+    .controls
+      .label
+        font-weight: bold
+        .validation_error
+          display: none
+          font-weight: normal
+          color: red
+        
+      .body
+        margin: 0px 0px 0px 0px
+        .input
+          padding: 5px
+          margin-bottom: 10px
+        input
+          padding: 5px
+        input[type=text]
+          margin: 5px 0px 0px 0px
+          background-image: url(../images/form-bg.gif)
+          background-repeat: repeat-x
+          border: 1px solid #ebebeb
+          width: 470px
+          color: #2b2b2b
+        label
+          margin-left: 5px
+          margin-right: 10px
+        .error
+          color: red
+    
+    .servers
+      input
+        margin: 0px 5px 0px 0px
+      .body
+        .server_selection
+          float: left
+          margin: 0px 5px 0px 0px
+          height: 25px
+          select
+            font-size: 1em
+            padding: 1px
+        .loader
+          float: left
+          margin: 2px 0px 0px 2px
+          display: none
+        .status
+          float: left
+          padding: 10px 0px 5px 0px
+          display: none
+          
+    .deploy
+      input
+        width: 480px
+        padding: 15px 15px 10px 15px
+        background-image: url(../images/sidebar-button-bg.gif)
+        background-repeat: repeat-x
+        border: 1px solid #cbcbcb
+        font-size: 1.4em
+        cursor: pointer
+        
+.right_sidebar
+  float: right
+  width: 280px
+  
+  .script_sidebar
+    padding: 10px 20px 10px 20px
+    margin: 10px 0px 0px 0px
+    background-color: #fbfbf9
+    border: 2px solid #ececea
+    ul
+      li
+        a
+          padding: 15px
+          margin: 10px 0px 10px 0px
+          background-image: url(../images/sidebar-button-bg.gif)
+          background-repeat: repeat-x
+          border: 1px solid #cbcbcb
+          display: block
+        a.green_button_bg
+          background-image: url(../images/sidebar-button-bg-green.gif)
+        a:hover, a.active
+          color: #2b2b2b
+
+.script_topbar
+  float: left
+  width: 500px
+  height: 50px
+  margin: 10px 0px 0px 0px
+  background-image: url(../images/scripts_topbar_bg.gif)
+  background-repeat: repeat-x
+
+  ul
+    margin: 15px 0px 0px 0px
+    padding: 0px 0px 0px 10px
+    li
+      float: left
+      a
+        padding: 6px 8px 6px 8px
+        margin: 0px 8px 0px 0px
+        font-size: 0.7em
+        background-color: #d3d3d3
+        color: #2b2b2b
+      a:hover, a.active
+        background-color: #5f5f5f
+        color: #ffffff
+
+  input
+    border: none
+    padding: 3px 25px 3px 3px
+    font-size: 0.9em
+    width: 195px
+    height: 19px
+    margin-top: -2px
+    background-image: url(../images/magnifier.png)
+    background-repeat: no-repeat
+    background-position: 202px 5px
+
+.script_topbar_show
+  float: left
+  width: 500px
+  height: 50px
+  margin: 10px 0px 0px 0px
+  background-image: url(../images/scripts_topbar_bg.gif)
+  background-repeat: repeat-x
+
+  ul
+    float: left
+    margin: 15px 0px 0px 0px
+    padding: 0px 0px 0px 10px
+    li
+      float: left
+    li.name
+      font-size: 1.2em
+
+  ul.actions
+    float: right
+    padding: 0px 10px 0px 0px
+
+.my-scripts
+  margin: 0px 0px 20px 0px
+  .header
+    padding: 15px
+    font-size: 1.2em
+    background-color: #fbfbf9
+    border-bottom: 3px solid #ececea
+
+  .script-list
+    .create
+      margin: 5px 0px 0px 0px
+      padding: 10px
+      font-size: 0.9em
+      background-image: url(../images/button-bg-large.gif)
+      background-repeat: repeat-x
+      border: 1px solid #f0f2f3
+      text-align: center
+      line-height: 150%
+    .show
+      margin: 3px 0px 0px 0px
+      text-align: center
+      a
+        padding: 15px
+        display: block
+        background-image: url(../images/button-bg-large.gif)
+        background-repeat: repeat-x
+        font-size: 0.9em
+        border: 1px solid #f0f2f3
+    .script
+      margin: 0px
+      padding: 0px
+      a
+        padding: 10px
+        border-bottom: 1px solid #ececea
+        font-size: 0.9em
+        background-color: #fefefc
+        display: block
+      a:hover
+        background-color: #f9fcfe
+    .hidden-scripts
+      display: none
+
+.code-heading
+  text-align: center
+  padding: 20px
+  background-image: url(../images/facebox/code-header-bg.gif)
+  background-repeat: repeat-x
+  color: #61656d
+  font-size: 1.2em
+  border: 1px solid #dadfe5
+
+.sidebar-tags
+  margin: 25px 0px 0px 10px
+  li
+    margin: 0px 0px 20px 0px
+    a
+      background-image: url(../images/form-bg.gif)
+      border: 1px solid lightgray
+      padding: 5px
+
+#script
+  .body
+    .activity
+      .heading.toggle
+        height: 22px
+        a:link, a:visited
+          font-size: 0.8em
+          background-color: #efefed
+          padding: 5px 8px 5px 8px
+          color: #9f9f9e
+        a.active, a:hover
+          color: #313131
+    
+      .log
+        display: block
+      .comments
+        display: none

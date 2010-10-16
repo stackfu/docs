@@ -1,0 +1,79 @@
+!!!
+%html
+  %head
+    %meta{ 'http-equiv' => 'content-type', :content => 'text/html; charset=utf-8' }
+    %title
+      StackFu Docs
+      = @item[:title]
+    = stylesheet_link_tag 'reset', 'home', 'application', 'coderay'
+
+  %body
+    .heading
+      .top
+        .logo
+          = link_to(image_tag('logo.gif'), "root_path")
+
+        %span#signed_in
+          :erb
+            not signed in, <%= link_to 'sign in now', "new_user_session_path" %>
+
+        .navigation
+          %ul
+            %li= link_to 'Scripts', "scripts_path" #, :class => active?('scripts')
+            %li= link_to 'Sign in', "new_user_session_path" #, :class => active?('sessions', 'passwords')
+            %li= link_to 'Sign up', "new_user_registration_path" #, :class => active?('registrations')
+
+      .bottom
+        .inner
+          .sub-navigation
+
+    .wrapper#wrapper
+      .content#content
+        .topics
+          .topic
+            Getting Started
+            %ul
+              %li= link_to 'Installation', ''
+              %li= link_to 'Commands', ''
+
+          .topic
+            Writing Scripts
+            %ul
+              %li= link_to 'Introduction', '/intro/'
+              %li= link_to 'Manifest', '/manifest/'
+              %li= link_to 'Controls', ''
+              %li= link_to 'Requirements', ''
+              %li= link_to 'Executions', ''
+              %li= link_to 'Validations', ''
+              
+          .topic
+            CLI Interface
+            %ul
+              %li= link_to 'Creating', ''
+              %li= link_to 'Cloning', ''
+              %li= link_to 'Publishing', ''
+              %li= link_to 'Listing Scripts and Servers', ''
+              
+        .article
+          .contents
+            = yield
+          %br{ :clear => 'all' }
+
+    .footer
+      .inner
+        .left
+          .navigation
+            %ul
+              %li= link_to 'StackFu Ruby Gem', ''
+              %li= link_to 'Blog', ''
+              %li= link_to 'Twitter', ''
+              %li= link_to 'FAQ', ''
+              %li= link_to 'Support', ''
+              %li= link_to 'Terms &amp; Conditions', ''
+              %li= link_to 'Privacy Policy', ''
+              %li= link_to 'Feedback', ''
+          .text
+            %p
+              &copy; Copyright 2010-present StackFu. All Rights Reserved.
+            %p
+              StackFu and it’s logo are trademarks of StackFu.

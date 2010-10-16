@@ -9,9 +9,18 @@ include Nanoc3::Helpers::Tagging
 include Nanoc3::Helpers::Text
 include Nanoc3::Helpers::XMLSitemap
 
-# def image_tag(url, options = {})
-#   html =  "  html += options[:title] ? "title=\"#{options[:title]}\" " : ""
-#   html += options[:alt] ? "alt=\"#{options[:alt]}\"" : ""
-#   html += "/>"
-#   html
-# end
+def image_tag(url, options = {})
+  html =  "<img src=\"/images/#{url}\" "  
+  html += options[:title] ? "title=\"#{options[:title]}\" " : ""
+  html += options[:alt] ? "alt=\"#{options[:alt]}\"" : ""
+  html += "/>"
+  html
+end
+
+def stylesheet_link_tag(*sources)
+  content = []
+  sources.each do |source|
+    content << %Q(<link rel="stylesheet" type="text/css" href="/stylesheets/#{source}.css" media="screen">)
+  end
+  content.join("\n")
+end

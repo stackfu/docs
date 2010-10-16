@@ -1,0 +1,484 @@
+$black: #2b2b2b
+$blue: #146390
+$gray: #ccc
+
+/* Global Layout */
+
+body
+  background-color: #ffffff
+  font:
+    family: Helvetica, Tahoma, Arial
+    size: 1em
+  color: $black
+
+a:link, a:visited
+  color: $blue
+  text-decoration: none
+  img
+    border: none
+
+a:hover
+  color: $black
+
+p
+  padding: 5px 0px 5px 0px
+  font: 0.9em
+  line-height: 1.4em
+  margin-bottom: 10px
+
+h1
+  font-size: 1.6em
+  margin-bottom: 15px
+  font-weight: bold
+
+h2
+  margin-bottom: 15px
+  margin-top: 15px
+  font-size: 1.5em
+  font-weight: bold
+  
+h3
+  font-size: 1.4em
+h4
+  font-size: 1.3em
+h5
+  font-size: 1.2em
+
+strong
+  font-weight: bold
+  
+hr.clear
+  clear: both
+  height: 0px
+  width: 0px
+
+div.flash
+  padding: 10px
+  margin: 10px 0px 30px 0px
+
+div.flash.notice
+  background-color: #cfc
+
+div.flash.error, div.flash.alert
+  background-color: #fcc
+
+.heading
+  margin: 20px 0px 25px 0px
+  .top
+    width: 940px
+    margin: auto
+    height: 80px
+    .logo
+      float: left
+      width: 340px
+    span#signed_in
+      float: right
+      font-size: 0.7em
+      line-height: 20px
+    .navigation
+      float: right
+      width: 550px
+      margin: 37px 0px 0px 0px
+      ul
+        float: right
+        li
+          float: left
+          a:link, a:visited
+            background-color: #6da3c2
+            padding: 10px 15px 6px 15px
+            margin: 0px 0px 0px 10px
+            color: #ffffff
+            font-size: 0.7em
+          a:hover, a.active
+            background-color: #5f5f5f
+  .bottom
+    background-image: url(../images/heading-border.gif)
+    background-repeat: repeat-x
+    height: 34px
+    .inner
+      width: 940px
+      margin: auto
+      padding: 8px 0px 0px 0px
+      font-size: 0.7em
+      .sub-navigation
+        ul
+          float: right
+          li
+            float: left
+            padding: 3px 0px 0px 10px
+            a:link, a:visited
+              padding: 0px 6px 0px 0px
+              color: #5f5f5f
+              font-size: 1.0em
+              font-weight: normal
+            a:hover, a.active
+              color: #6da3c2
+              
+.footer
+  margin-top: 25px
+  padding: 0px 0px 0px 0px
+  .inner
+    width: 800px
+    margin: 0px auto 0px auto
+    padding: 10px 0px 0px 0px
+    .left
+      float: left
+      width: 700px
+      .navigation
+        float: left
+        width: 675px
+        ul
+          li
+            float: left
+            a:link, a:visited
+              font-size: 0.8em
+              color: #b6b6b6
+              padding: 0px 10px 10px 0px
+              text-decoration: underline
+            a:hover
+              color: #146390
+      .text
+        float: left
+        width: 575px
+        font-size: 0.7em
+        color: #b6b6b6
+        margin: 10px 0px 0px 0px
+        p
+          padding: 0px
+          margin: 5px 0px 0px 0px
+  
+.wrapper
+  width: 940px
+  margin: auto
+  
+  .topics
+    float: left
+    width: 200px
+    
+    .topic
+      font-weight: bold
+      margin-bottom: 20px
+      
+      ul
+        padding-top: 5px
+        font-weight: normal
+        margin-left: 10px
+        li
+          padding-bottom: 5px
+          
+        
+  .article
+    border-left: 1px solid #cbcbcb
+    float: left
+    width: 739px
+    
+    .contents
+      margin-left: 20px
+      
+      ul
+        margin-left: 20px
+        li
+          line-height: 1.5em
+          list-style-type: disc
+
+      pre
+        margin-top: 10px
+        margin-bottom: 20px
+        border: solid 1px #ccc
+        background: #f5f5f5
+        padding: 10px
+
+      
+
+/* Global */
+.button
+  border: 1px solid #cbcbcb
+  font-size: 0.7em
+  padding: 4px 5px 3px 5px
+  background-repeat: repeat-x
+  
+.button.gray
+  background-image: url(../images/button-bg-gray.gif)
+  a:link, a:visited
+    color: #2b2b2b
+  a:hover
+    color: #146390
+
+.icon
+  background-repeat: no-repeat
+  padding: 2px 16px 16px 0px
+  
+.icon.follow
+  background-image: url(../images/icon-follow.png)
+  padding: 3px 16px 16px 0px
+
+.icon.message
+  background-image: url(../images/icon-message.png)
+
+.icon.watch
+  background-image: url(../images/icon-watch.png)
+
+.icon.unwatch
+  background-image: url(../images/icon-unwatch.png)
+
+.hidden
+  display: none
+
+/* Simple Form */
+form.simple_form
+  label.string, label.password, label.email, label.text, label.select
+    display: block
+  input
+    margin: 15px 0px 0px 0px
+  .input.string, .input.password, .input.email, .input.text, .input.select
+    margin: 15px 0px 0px 0px
+    input, textarea
+      margin: 5px 0px 0px 0px
+      padding: 5px
+      background-image: url(../images/form-bg.gif)
+      background-repeat: repeat-x
+      border: 1px solid #ebebeb
+      width: 380px
+      color: #2b2b2b
+    textarea
+      height: 70px
+    select
+      margin: 5px 0px 0px 0px
+    
+  .input.boolean
+    margin: 15px 0px 0px 0px
+    input
+      margin: 5px 0px 0px 0px
+  .error
+    display: block
+    color: red
+    font-size: 0.8em
+    margin: 3px 0px 0px 2px
+  .hint
+    display: block
+    color: #b0b0b0
+    font-size: 0.8em
+    margin: 0px 0px 0px 0px
+  .button
+    background-image: url(../images/form-button-bg.gif)
+    background-repeat: repeat-x
+    border: 1px solid #cacaca
+    font-size: 0.8em
+    padding: 5px
+    color: #2b2b2b
+
+
+/* Login */
+
+.login
+  .left
+    float: left
+    width: 400px
+    ul
+      li
+        background-image: url(../images/tick.png)
+        background-repeat: no-repeat
+        margin: 0px 0px 3px 0px
+        padding: 0px 0px 0px 25px
+    h2.button
+      background-color: #146390
+      display: inline
+      padding: 15px
+      a
+        color: #f4f4f4
+      
+  .right
+    padding: 0px 0px 115px 30px
+    float: right
+    width: 300px
+    background-image: url(../images/login-shade.gif)
+    background-repeat: repeat-y
+    .links
+      margin: 20px 0px 0px 0px
+
+
+/* Register */
+
+.register
+  .left
+    float: left
+    width: 400px
+    ul
+      li
+        background-image: url(../images/tick.png)
+        background-repeat: no-repeat
+        margin: 0px 0px 3px 0px
+        padding: 0px 0px 0px 25px
+    h2.button
+      background-color: #146390
+      display: inline
+      padding: 15px
+      a
+        color: #f4f4f4
+
+  .right
+    padding: 0px 0px 5px 30px
+    float: right
+    width: 300px
+    background-image: url(../images/login-shade.gif)
+    background-repeat: repeat-y
+    .links
+      margin: 20px 0px 0px 0px
+      
+      
+/* Pagination */
+
+.pagination
+  background-color: #fbfbf9
+  border-bottom: 2px solid #ececea
+  height: 28px
+  padding: 12px 10px 0px 10px
+  text-align: right
+  
+  span, em, a
+    padding: 6px
+    background-color: #6da3c2
+    color: #ffffff
+    font-size: 0.8em
+    
+  a:hover, em
+    background-color: #5f5f5f
+  
+  .disabled
+    display: none
+    
+/* Activity log */
+
+.activity_box
+  overflow: hidden
+  padding: 0 0 1em 2em
+  
+.created_script
+  background: url("/images/actions/created_script.png") no-repeat scroll 0px 10px transparent
+  
+.updated_script
+  background: url("/images/actions/updated_script.png") no-repeat scroll 0px 10px transparent
+
+.added_server
+  background: url("/images/actions/added_server.png") no-repeat scroll 0px 10px transparent
+
+.updated_server
+  background: url("/images/actions/updated_server.png") no-repeat scroll 0px 10px transparent
+
+.deployed
+  background: url("/images/actions/deployed.png") no-repeat scroll 0px 10px transparent
+
+.started_deploying
+  background: url("/images/actions/started_deploying.png") no-repeat scroll 0px 10px transparent
+
+.finished_deploying
+  background: url("/images/actions/finished_deploying.png") no-repeat scroll 0px 10px transparent
+
+.failed_deploying
+  background: url("/images/actions/failed_deploying.png") no-repeat scroll 0px 10px transparent
+
+.started_watching_script
+  background: url("/images/actions/started_watching_script.png") no-repeat scroll 0px 10px transparent
+
+.started_following
+  background: url("/images/actions/started_following.png") no-repeat scroll 0px 10px transparent
+
+.commented_on_script
+  background: url("/images/actions/commented_on_script.png") no-repeat scroll 0px 10px transparent
+
+.activity_log
+  padding-top: 10px
+  padding-bottom: 10px
+  font-size: 0.9em
+  border-bottom: 1px solid $gray
+  overflow: hidden
+  
+  .title
+    font-weight: bold
+    margin-bottom: 5px
+
+  .details
+    display: block
+    line-height: 1.4em
+    .gravatar
+      img
+        border: 1px solid $gray
+        padding: 2px
+      margin-top: 5px
+      float: left
+    .contents
+      padding: 2px
+      margin-left: 45px
+      color: darken($gray, 35)
+      
+      .options
+        color: black
+        font-weight: bold
+
+      .key
+        color: black
+        width: 100px
+        display: block
+        text-align: right
+        float: left
+        
+      .value
+        margin-left: 10px
+
+
+.comments
+  p.no_comments
+    margin: 10px 0px 10px 35px
+  .list
+    span.actions
+      font-size: 0.8em
+      font-weight: normal
+      float: right
+      margin: 2px 0px 0px 0px
+    .contents
+      .standard
+      .edit
+        display: none
+        textarea
+          float: right
+          width: 405px
+          height: 55px
+          font-size: 0.9em
+          padding: 5px
+          border: 1px solid #e5e5e5
+          margin: 5px 0px 0px 0px
+        input.button
+          float: right
+          margin: 5px 0px 0px 5px
+        span.loader
+          display: none
+          img
+            margin: 5px 0px 0px 0px
+  form#new_comment
+    textarea
+      width: 455px
+      height: 55px
+      float: right
+      font-size: 0.9em
+      padding: 5px
+      border: 1px solid #e5e5e5
+    input
+      float: right
+    .submit
+      float: right
+      margin: 10px 0px 0px 0px
+      width: 465px
+      span.message
+        font-size: 0.8em
+      span.message.error
+        color: red
+    
+.tagMatches
+  display: block
+  ._tag_suggestion
+    display: block
+    float: left
+    background-image: url(../images/form-bg.gif)
+    border: 1px solid lightgray
+    padding: 5px
+    margin: 10px 10px 10px 0px
