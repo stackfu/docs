@@ -1,0 +1,211 @@
+--- 
+title: Quick Start
+---
+
+%h2 Quick Start
+
+%p
+  Let's build a script from scratch and publish it live. The script
+  we'll build will be very simple: it will install and configure the
+  Ubuntu firewall ufw.
+
+%h3 1. Creating the folder structure for the script
+  
+%p
+  The first step to create a new script is using the <code>create</code>
+  command to create the correct folder structure:
+  
+  %pre
+    %code
+      :preserve
+        $ stackfu create ubuntu_firewall
+        	create  ubuntu_firewall/
+        	create  ubuntu_firewall/script.yml
+        	create  ubuntu_firewall/config/
+        	create  ubuntu_firewall/config/01-controls.yml
+        	create  ubuntu_firewall/config/02-requirements.yml
+        	create  ubuntu_firewall/config/03-executions.yml
+        	create  ubuntu_firewall/config/04-validations.yml
+        	create  ubuntu_firewall/executables/
+        Success: Script ubuntu_firewall created successfully
+        
+%p
+  Now, open the created folder in your favorite editor. We're going to
+  work first on the <code>script.yml</code> file that contains the
+  general properties of the script, like name, description, tags, etc.
+
+%p
+  Here's how our <code>script.yml</code> should be:
+  
+  %pre
+    %code
+      :preserve
+        --- 
+        type: script
+        name: "ubuntu_firewall"
+        description: "Installs ufw firewall in Ubuntu"
+        tags: ['ubuntu', 'security', 'firewall']
+
+%br/
+
+%h3 2. Publishing the script
+
+%p
+  Before going further, let's try to publish this script and see how it
+  looks in StackFu website. For that, let's use the <code>publish</code>
+  (that can be entered as just <code>pub</code>) command:
+  
+  
+  %pre
+    %code
+      :preserve
+        $ stackfu pub
+        Error: there were validation problems with your script.
+
+        Errors in config/01-controls.yml:
+        - invalid format
+
+        Errors in config/03-executions.yml:
+        - invalid format
+        
+%p
+  You can see that we had a couple of validation problems. That's because
+  our script doesn't do anything yet. Let's fix this.
+  
+.hint
+  The <code>create</code> command can optionally take parameters. Those
+  parameters can help you building the script folder and files to meet
+  your needs.
+  
+%br/
+  
+%h3 3. Writing the script description
+
+%p
+  Let's re-run the create command, now passing a few parameters:
+  
+  %pre
+    %code
+      :preserve
+        $ create ubuntu-firewall ports:textbox install_ufw:script configure_ufw:script
+                create  ubuntu-firewall/script.yml
+                create  ubuntu-firewall/config/01-controls.yml
+                create  ubuntu-firewall/config/02-requirements.yml
+                create  ubuntu-firewall/config/03-executions.yml
+                create  ubuntu-firewall/config/04-validations.yml
+                create  ubuntu-firewall/executables/install_ufw.sh.erb
+                create  ubuntu-firewall/executables/configure_ufw.sh.erb
+        Success: Script ubuntu-firewall created successfully
+        
+%p
+  With those new parameters, we have created a new input parameter called ports, that
+  will be rendered as a regular input box (Textbox). We have also created two executables,
+  called <code>configure_ufw.sh.erb</code> and <code>install_ufw.sh.erb</code>.
+  
+%p
+  Let's edit the <code>scripts.yml</code> again, adding:
+  
+  %pre
+    %code
+      :preserve
+        --- 
+        type: script
+        name: "ubuntu_firewall"
+        description: "Installs ufw firewall in Ubuntu"
+        tags: ['ubuntu', 'security', 'firewall']
+        
+%p
+  Now let's take a look at our input parameters. Open the file <code>01-controls.yml</code>.
+  It should look like this:
+  
+  %pre
+    %code
+      :preserve
+        controls:
+        - name: ports
+          label: Ports
+          type: Textbox
+  
+%p
+  Just change the label to read "Ports you want to leave open". Save the file.
+  
+%p
+  You can ignore files <code>02-requirements.yml</code> and <code>04-validations.yml</code> for now.
+  Open <code>03-executions.yml</code>:
+  
+  %pre
+    %code
+      :preserve
+        executions: 
+        - description: Install Ufw
+          file: install_ufw
+        - description: Configure Ufw
+          file: configure_ufw
+
+%p
+  No change needed here: note that the create command already created good descriptions for both
+  the executions we'll have for this script.
+  
+%p
+  Finally, let's open the <code>install_ufw.sh.erb</code> file and add bash code that will install
+  ufw for us:
+  
+  %pre
+    %code
+      :preserve
+        # 
+        # install_ufw.sh
+        # Sat Oct 16 15:06:48 -0200 2010
+        #
+
+        apt-get update
+        apt-get install -y ufw
+
+%p
+  The code is quite trivial: it will update the packages available to Aptitude and then it will
+  invoke <code>apt-get install</code> to install ufw.
+  
+  %pre
+    %code
+      :preserve
+        # 
+        # configure_ufw.sh
+        # Sat Oct 16 15:06:48 -0200 2009
+        #
+
+        ufw default deny
+        &lt;% ports.split(",").each do |port| %>
+          echo "Allowing port &lt;%= port %>"
+          ufw allow &lt;%= port %> 
+        &lt;% end %>
+        yes | ufw enable
+        
+%p
+  As you can see, for this script we took advantage of some Ruby code. That's possible because 
+  scripts are ERB files. Don't worry if you don't understand fully what this code does, let's
+  move on and try publishing this script again:
+  
+  %pre
+    %code
+      :preserve
+        $ stackfu pub
+        Publishing script ubuntu_firewall...
+        Success: Script ubuntu_firewall published.
+        
+%p
+  This time it worked. And here's how this script looks in StackFu website:
+  
+  %img{ :src => "/images/script-tutorial-01.png" }
+  
+%h3 4. Control validations
+
+%p
+  Our script so far takes one parameter, called ports, and it expects the contents of this
+  field to be a comma separated list of ports. For instance, if the user wants ports 22,
+  80 and 8080 open, he would enter "22,80,8080" on that field. However, our parameter is
+  a free-form text input, so nothing guarantees that the user would pass a valid value, 
+  and that is likely to break our installation.
+  
+%p
+  To avoid this, let's use a validation on that field. One of the available validations
+  is called <code>matches</code> and it 
