@@ -10,7 +10,10 @@ include Nanoc3::Helpers::Text
 include Nanoc3::Helpers::XMLSitemap
 
 def link(label, url=nil)
-  link_to label, url || "/#{label.downcase.gsub(" ", "_")}/"
+  options = {}
+  options = { :target => '_blank' } if url =~ /^https?:/
+    
+  link_to label, url || "/#{label.downcase.gsub(" ", "_")}/", options
 end
 
 def image_tag(url, options = {})
