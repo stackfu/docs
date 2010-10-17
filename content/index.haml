@@ -82,8 +82,19 @@ title: Main
 %h4 Comments, Suggestions and Fixes
 
 %p
-  If you have any comments or suggestions about this documentation, please
-  email 
+  If you have any fixes for the documentation, please do one of the following:
+  
+  %ul
+    %li
+      = link_to 'fork our repo', 'http://github.com/stackfu/docs'
+      in GitHub, make the changes, and send a pull request (always preferred) or;
+    %li
+      email 
+      = "#{link_to 'docs@stackfu.com', 'mailto:docs@stackfu.com'},"
+      if you don't want to get your hands dirty.
+      
+%p
+  For comments or suggestions, just email 
   = "#{link_to 'docs@stackfu.com', 'mailto:docs@stackfu.com'}."
   
 %h4 Support
