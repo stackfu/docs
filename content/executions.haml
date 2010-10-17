@@ -20,36 +20,37 @@ title: Executions
   Each script can mix bash code and ruby, since they are ERB files. The scripts are 
   always first preprocessed in StackFu and then executed. So a script like this:
   
-  %pre
-    %code
-      :preserve
-        ufw default deny
-        &lt;% ports.split(",").each do |port| %>
-          echo "Allowing port &lt;%= port %>"
-          ufw allow &lt;%= port %> 
-        &lt;% end %>
-        yes | ufw enable
+%pre
+  %code
+    :preserve
+      ufw default deny
+      &lt;% ports.split(",").each do |port| %>
+        echo "Allowing port &lt;%= port %>"
+        ufw allow &lt;%= port %> 
+      &lt;% end %>
+      yes | ufw enable
   
+%p
   When the user provides "22,23,25,80,8080", for instance, will first be transformed into
   this shell script:
   
-  %pre
-    %code
-      :preserve
-        ufw default deny
-          echo "Allowing port 22"
-          ufw allow 22
-          echo "Allowing port 23"
-          ufw allow 23
-          echo "Allowing port 25"
-          ufw allow 24
-          echo "Allowing port 80"
-          ufw allow 80
-          echo "Allowing port 8080"
-          ufw allow 8080
-        yes | ufw enable
-  
-  And then executed on the server.
+%pre
+  %code
+    :preserve
+      ufw default deny
+        echo "Allowing port 22"
+        ufw allow 22
+        echo "Allowing port 23"
+        ufw allow 23
+        echo "Allowing port 25"
+        ufw allow 24
+        echo "Allowing port 80"
+        ufw allow 80
+        echo "Allowing port 8080"
+        ufw allow 8080
+      yes | ufw enable
+
+And then executed on the server.
   
 %h2 Special variable <code>env_ip</code>
 
@@ -57,3 +58,24 @@ title: Executions
   When the server first checks in with StackFu, we gather its public IP and save it
   in our database. This information is useful when installing scripts, so it is provided
   and can be used like it were a user provided variable.
+
+%p
+  Let's imagine you need to configure a PHP application that has a <code>config.php</code>
+  file, that is usually something that the user would do interactively. You can do it easily,
+  even if your virtual host is only bound to your external IP, using the <code>env_ip</code>
+  variable:
+
+%pre
+  %code
+    :preserve
+      # some setup
+      cd /tmp
+      wget http://hugephpsocialapp.com/latest.tar.gz
+      tar vzxf latest.tar.gz
+      cd latest
+      # (...)
+      
+      # calls this server's config.php
+      curl -L http://&lt;%= env_ip %>/config.php
+        -F "password=&lt;%= password %>" 
+        -F "database=&lt;%= database %>"
