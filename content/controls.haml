@@ -16,13 +16,13 @@ title: Controls
         type: Textbox
 
 %p
-  Free-text control types, like Textbox, Numericbox or Password can take one or more validation parameters, that allow customization of which values are expected on the control.
+  Free-text control types, like Textbox, Numericbox or Password, can take one or more validation parameters that allow customization of which values are expected for the control.
 
 %p
-  On the other hand, list-based controls like Radio and Combobox require a list of options. 
+  On the other hand, list-based controls, like Radio and Combobox, require a list of options. 
 
 %p
-  Here's one example of an hypotetical config file with multiple controls of multiple types:
+  Here's one example of a hypothetical config file with multiple controls of multiple types:
 
 %pre
   %code
@@ -56,12 +56,12 @@ title: Controls
   - **label:** a label for the control 	    
   - **required:** indicates whether the control must have a value. Accepted values: `true` or `false`.	    
   - **validations:** a list of validations to apply to this control. The format of this field is always `type: value`.     
-  - **validation_messages:** allows setting error message for each validations in `validation`. Format is `type: message`.     
+  - **validation_messages:** allows setting an error message for each validations in `validation`. Format is `type: message`.     
 
 
 %h3 Validations
 
-%p Here are listed all the possible validations:
+%p Here is a list of all available validations:
 
 :erb
   <table class='items'> 
@@ -105,12 +105,12 @@ title: Controls
       </tr> 
       <tr> 
         <td class="validation">email</td> 
-        <td class="description">Value must have the format of an email</td> 
+        <td class="description">Value must have the format of an email address</td> 
         <td class="example"><code>email: true</code></td> 
       </tr> 
       <tr> 
         <td class="validation">url</td> 
-        <td class="description">Value must have the format of an url</td> 
+        <td class="description">Value must have the format of a url</td> 
         <td class="example"><code>url: true</code></td> 
       </tr> 
       <tr> 
