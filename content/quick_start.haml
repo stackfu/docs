@@ -30,12 +30,12 @@ title: Quick Start
         Success: Script ubuntu_firewall created successfully
         
 %p
-  Now, open the created folder in your favorite editor. We're going to
+  Now, open the newly created folder in your favorite editor. We're going to
   work first on the <code>script.yml</code> file that contains the
   general properties of the script, like name, description, tags, etc.
 
 %p
-  Here's how our <code>script.yml</code> should be:
+  Here's how our <code>script.yml</code> should look:
   
   %pre
     %code
@@ -43,7 +43,7 @@ title: Quick Start
         --- 
         type: script
         name: "ubuntu_firewall"
-        description: "Installs ufw firewall in Ubuntu"
+        description: "Installs ufw firewall on Ubuntu"
         tags: ['ubuntu', 'security', 'firewall']
 
 %br/
@@ -52,8 +52,8 @@ title: Quick Start
 
 %p
   Before going further, let's try to publish this script and see how it
-  looks in StackFu website. For that, let's use the <code>publish</code>
-  (that can be entered as just <code>pub</code>) command:
+  looks on the StackFu website. For that, let's use the <code>publish</code>
+  (this can be shortened to just <code>pub</code>) command:
   
   
   %pre
@@ -69,13 +69,13 @@ title: Quick Start
         - invalid format
         
 %p
-  You can see that we had a couple of validation problems. That's because
-  our script doesn't do anything yet. Let's fix this.
+  You can see that we have a couple of validation problems. That's because
+  our script doesn't do anything yet. Let's fix it.
   
 .hint
   %b HINT: 
   The <code>create</code> command can optionally take parameters. Those
-  parameters can help you building the script folder and files to meet
+  parameters can help you build the script folder and files to meet
   your needs.
   
 %br/
@@ -99,8 +99,8 @@ title: Quick Start
         Success: Script ubuntu-firewall created successfully
         
 %p
-  With those new parameters, we have created a new input parameter called ports, that
-  will be rendered as a regular input box (Textbox). We have also created two executables,
+  With those new parameters, we've created a new input parameter called ports that
+  will be rendered as a regular input box (Textbox). We've also created two executables
   called <code>configure_ufw.sh.erb</code> and <code>install_ufw.sh.erb</code>.
   
 %p
@@ -112,7 +112,7 @@ title: Quick Start
         --- 
         type: script
         name: "ubuntu_firewall"
-        description: "Installs ufw firewall in Ubuntu"
+        description: "Installs ufw firewall on Ubuntu"
         tags: ['ubuntu', 'security', 'firewall']
         
 %p
@@ -128,10 +128,10 @@ title: Quick Start
           type: Textbox
   
 %p
-  Just change the label to read "Ports you want to leave open". Save the file.
+  Just change the label to read "Ports you want to leave open" and save the file.
   
 %p
-  You can ignore files <code>02-requirements.yml</code> and <code>04-validations.yml</code> for now.
+  You can ignore <code>02-requirements.yml</code> and <code>04-validations.yml</code> for now.
   Open <code>03-executions.yml</code>:
   
   %pre
@@ -144,11 +144,11 @@ title: Quick Start
           file: configure_ufw
 
 %p
-  No change needed here: note that the create command already created good descriptions for both
+  No change needed here: note that the create command has already created good descriptions for both
   the executions we'll have for this script.
   
 %p
-  Finally, let's open the <code>install_ufw.sh.erb</code> file and add bash code that will install
+  Finally, let's open the <code>install_ufw.sh.erb</code> file and add the bash code that will install
   ufw for us:
   
   %pre
@@ -194,22 +194,22 @@ title: Quick Start
         Success: Script ubuntu_firewall published.
         
 %p
-  This time it worked. And here's how this script looks in StackFu website:
+  This time it worked. And here's how this script looks on the StackFu website:
   
   %img{ :src => "/images/script-tutorial-01.png" }
   
 %h3 4. Adding validations
 
 %p
-  Our script so far takes one parameter, called ports, and it expects the contents of this
+  So far our script takes one parameter, ports, and it expects the contents of this
   field to be a comma separated list of ports. For instance, if the user wants ports 22,
-  80 and 8080 open, he would enter "22,80,8080" on that field. However, our parameter is
+  80 and 8080 open, he would enter "22,80,8080" in that field. However, our parameter is
   a free-form text input, so nothing guarantees that the user would pass a valid value, 
   and that is likely to break our installation.
   
 %p
   To avoid this, let's use a validation on that field. One of the available validations
-  is called <code>matches</code> and it will check if the value entered on a field
+  is called <code>matches</code> and it will check if the value entered in a field
   matches a given Regular Expression.
 
 %p
@@ -233,12 +233,12 @@ title: Quick Start
             matches: must be port numbers, separated by a comma (ex. 22,80,8080)
   
 %p
-  With this we can make sure that the field will be always entered and that it will
+  With this we can make sure that the field will always be entered and that it will
   match the format we expect.
   
 %p
   Here's what happens now, when the user tries to submit a deployment of our script
-  with the field empty or misformatted:
+  with the field empty or formatted incorrectly:
   
   %img{ :src => "/images/script-tutorial-02.png" }
   

@@ -5,8 +5,8 @@ title: Requirements
 %h2 Requirements
 
 %p
-  Before installing the script, StackFu engine can perform some checks 
-  on the environment, to make sure the system meets the preconditions 
+  Before installing the script, the StackFu engine can perform some checks 
+  on the environment to make sure the system meets the preconditions 
   specified in the Requirements section.
 
 %p
@@ -23,7 +23,7 @@ title: Requirements
         type: FileExists
 
 %p
-  Each entry has a `type` and a `data` fields. On the example, two checks will be 
+  Each entry has a `type` and `data` field. In the example, two checks will be 
   performed: that the file `/usr/bin/apt-get` exists and is executable and the the 
   file `/var/data/some_file.dat` also exists.
 
@@ -32,25 +32,24 @@ title: Requirements
 <%= table(
 	:headers => ["Type", "Will assure"],
 	:contents => <<-EOS
-FileExists    | that the given file exists			     
-SymlinkExists | that the given symlink exists            
-ExecutableExists    | that the given file exists and is executable
-DirExists     | that the given directory exits           
-ProcessExists | that the process is runnning             
-RubyCanLoad   | that ruby can load a given lib      
-RubyGem       | that a given ruby gem is installed  
-EOS
-) %>
+  FileExists    | that the given file exists			     
+  SymlinkExists | that the given symlink exists            
+  ExecutableExists    | that the given file exists and is executable
+  DirExists     | that the given directory exits           
+  ProcessExists | that the process is runnning             
+  RubyCanLoad   | that ruby can load a given lib      
+  RubyGem       | that a given ruby gem is installed  
+  EOS
+  ) %>
 
-%p And the negative forms:
+  %p And the negative forms:
 
-<%= table(
-	:headers => ["Type", "Will assure"],
-	:contents => <<-EOS
-FileDoesntExist    | that the given file doesn't exist			     
-SymlinkDoesntExist | that the given symlink doesn't exist            
-ExecutableDoesntExist    | that the given file doesn't exist exist or isn't executable
-DirDoesntExist     | that the given directory doesn't exist           
-ProcessDoesntExist | that the process isn't runnning             
-EOS
+  <%= table(
+  	:headers => ["Type", "Will assure"],
+  	:contents => <<-EOS
+  FileDoesntExist    | that the given file doesn't exist			     
+  SymlinkDoesntExist | that the given symlink doesn't exist            
+  ExecutableDoesntExist    | that the given file doesn't exist exist or isn't executable
+  DirDoesntExist     | that the given directory doesn't exist           
+  ProcessDoesntExist | that the process isn't runnning             
 ) %>

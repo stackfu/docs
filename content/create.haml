@@ -5,14 +5,14 @@ title: Create Command
 %h2 Create
 
 %p
-  The first step to create new scripts is using the <code>create</code> command.
-  This command will create the required folder structure and prepopulate it with
-  necessary files to write your new script.
+  The first step to creating new scripts is using the <code>create</code> command.
+  This command will create the required folder structure and pre populate it with
+  the necessary files to write your new script.
   
 %p
   The only mandatory parameter <code>create</code> takes is the name of the script
-  you want to create. It will try to create a new folder, under the current one, 
-  named after your script:
+  you want to create. It will try to create a new folder under the current one named 
+  after your script:
   
 %pre
   %code
@@ -33,7 +33,7 @@ title: Create Command
 %p
   The <code>create</code> command also allows you to specify controls and
   executables that you want added to your script. This way it saves you
-  a couple of steps and prepopulates your script:
+  a couple of steps and pre populates your script:
   
 %pre
   %code
@@ -71,7 +71,7 @@ title: Create Command
         type: Combobox
 
 %p
-  And the same happened for <code>prepare</code> and <code>install</code> scripts. 
+  And the same happened for the <code>prepare</code> and <code>install</code> scripts. 
   They were created (<code>prepare.sh.erb</code> and <code>install.sh.erb</code>),
   and also added to <code>03-executions.yml</code>:
   
@@ -87,7 +87,7 @@ title: Create Command
         file: install
 
 %p
-  And here's how <code>prepare.sh.erb</code> looks like:
+  And here's how <code>prepare.sh.erb</code> looks:
 
 %pre
   %code
@@ -101,5 +101,5 @@ title: Create Command
       echo [<%= Time.now %>] Installing -- Prepare
 
 %p
-  Now you just have to edit those files and adapt to your needs.
+  Now you just have to edit those files and adapt them to your needs.
 

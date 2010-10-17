@@ -9,10 +9,10 @@ title: Validations
   they are executed after the executions are finished successfully.
   
 %p
-  The main responsibility of validations is to make sure the environment
-  after the installation matches what was expected. If this check fails,
+  The main responsibility of validations are to make sure the environment
+  after the installation matches what is expected. If this check fails,
   the deployment will be considered to be a failure and the user will
-  be notified properly, so he can take action.
+  be notified so he can take proper action.
 
 %p
   The validations descriptor file has the following format:
@@ -24,11 +24,11 @@ title: Validations
       validations: 
       - data: /usr/bin/my_new_program
         type: ExecutableExists
-      - data: /etc/data/my_new_program_data.date
+      - data: /etc/data/my_new_program_data.dat
         type: FileExists
 
 %p
-  Like validations, each entry has a `type` and a `data` fields. 
+  Like validations, each entry has a `type` and `data` field. 
   
 %p
   For more information about the existing types of validations, check
