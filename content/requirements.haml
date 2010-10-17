@@ -30,14 +30,27 @@ title: Requirements
 %p Here are the types of checks the engine can perform:
 
 <%= table(
-	:headers => ["Type", "Will check"],
+	:headers => ["Type", "Will assure"],
 	:contents => <<-EOS
-FileExists    | that a given file exists			     
-SymlinkExists | that a given symlink exists            
-ExecutableExists    | that a given file exists and is executable
-DirExists     | that a given directory exits           
-ProcessExists | that a process is runnning             
-RubyCanLoad   | if ruby can load a given lib      
-RubyGem       | if a given ruby gem is installed  
+FileExists    | that the given file exists			     
+SymlinkExists | that the given symlink exists            
+ExecutableExists    | that the given file exists and is executable
+DirExists     | that the given directory exits           
+ProcessExists | that the process is runnning             
+RubyCanLoad   | that ruby can load a given lib      
+RubyGem       | that a given ruby gem is installed  
+EOS
+) %>
+
+%p And the negative forms:
+
+<%= table(
+	:headers => ["Type", "Will assure"],
+	:contents => <<-EOS
+FileDoesntExist    | that the given file doesn't exist			     
+SymlinkDoesntExist | that the given symlink doesn't exist            
+ExecutableDoesntExist    | that the given file doesn't exist exist or isn't executable
+DirDoesntExist     | that the given directory doesn't exist           
+ProcessDoesntExist | that the process isn't runnning             
 EOS
 ) %>
