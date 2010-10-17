@@ -39,12 +39,12 @@ title: Requirements
   ProcessExists | that the process is runnning             
   RubyCanLoad   | that ruby can load a given lib      
   RubyGem       | that a given ruby gem is installed  
-  EOS
-  ) %>
+EOS
+) %>
 
-  %p And the negative forms:
+%p And the negative forms:
 
-  <%= table(
+<%= table(
   	:headers => ["Type", "Will assure"],
   	:contents => <<-EOS
   FileDoesntExist    | that the given file doesn't exist			     
@@ -52,4 +52,5 @@ title: Requirements
   ExecutableDoesntExist    | that the given file doesn't exist exist or isn't executable
   DirDoesntExist     | that the given directory doesn't exist           
   ProcessDoesntExist | that the process isn't runnning             
+EOS
 ) %>
