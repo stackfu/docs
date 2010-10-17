@@ -5,8 +5,8 @@ title: Requirements
 %h2 Requirements
 
 %p
-  Before installing the script, StackFu engine can perform some checks 
-  on the environment, to make sure the system meets the preconditions 
+  Before installing the script, the StackFu engine can perform some checks 
+  on the environment to make sure the system meets the preconditions 
   specified in the Requirements section.
 
 %p
@@ -23,7 +23,7 @@ title: Requirements
         type: FileExists
 
 %p
-  Each entry has a `type` and a `data` fields. On the example, two checks will be 
+  Each entry has a `type` and `data` field. In the example, two checks will be 
   performed: that the file `/usr/bin/apt-get` exists and is executable and the the 
   file `/var/data/some_file.dat` also exists.
 
@@ -36,7 +36,7 @@ FileExists    | that a given file exists
 SymlinkExists | that a given symlink exists            
 ExecutableExists    | that a given file exists and is executable
 DirExists     | that a given directory exits           
-ProcessExists | that a process is runnning             
+ProcessExists | that a process is running             
 RubyCanLoad   | if ruby can load a given lib      
 RubyGem       | if a given ruby gem is installed  
 EOS
