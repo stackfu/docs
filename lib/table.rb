@@ -1,6 +1,6 @@
 def table(options)
   contents = []
-  contents << "<table><thead><tr>"
+  contents << "<table class='items'><thead><tr>"
   
   css_classes = []
   options[:headers].each do |head|

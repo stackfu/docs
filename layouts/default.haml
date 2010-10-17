@@ -11,17 +11,17 @@
     .heading
       .top
         .logo
-          = link_to(image_tag('logo.gif'), "root_path")
+          = link_to(image_tag('logo.gif'), "http://beta.stackfu.com")
 
         %span#signed_in
           :erb
-            not signed in, <%= link_to 'sign in now', "new_user_session_path" %>
+            not signed in, <%= link_to 'sign in now', "http://beta.stackfu.com" %>
 
         .navigation
           %ul
-            %li= link_to 'Scripts', "scripts_path" #, :class => active?('scripts')
-            %li= link_to 'Sign in', "new_user_session_path" #, :class => active?('sessions', 'passwords')
-            %li= link_to 'Sign up', "new_user_registration_path" #, :class => active?('registrations')
+            / %li= link_to 'Scripts', "scripts_path" #, :class => active?('scripts')
+            / %li= link_to 'Sign in', "new_user_session_path" #, :class => active?('sessions', 'passwords')
+            / %li= link_to 'Sign up', "new_user_registration_path" #, :class => active?('registrations')
 
       .bottom
         .inner
@@ -49,16 +49,16 @@
           .topic
             CLI Interface
             %ul
-              %li= link 'Commands'
+              %li= link 'Usage'
+              %li= link 'Create'
               %li= link 'Dump'
-              %li= link 'Clone'
               %li= link 'Publish'
               %li= link 'Listing Scripts and Servers'
               
         .article
           .contents
             = yield
-          %br{ :clear => 'all' }
+        %br{ :clear => 'all' }
 
     .footer
       .inner
@@ -78,3 +78,14 @@
               &copy; Copyright 2010-present StackFu. All Rights Reserved.
             %p
               StackFu and it’s logo are trademarks of StackFu.
+              
+    :javascript
+      var clicky = { log: function(){ return; }, goal: function(){ return; }};
+      var clicky_site_id = 262312;
+      (function() {
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = ( document.location.protocol == 'https:' ? 'https://static.getclicky.com/js' : 'http://static.getclicky.com/js' );
+        ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+      })();

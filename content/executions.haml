@@ -1,0 +1,59 @@
+--- 
+title: Executions
+---
+
+%h2 Executions
+
+%p
+  This is the meat of the script, where things actually happen. After checking
+  for requirements, the installation takes place.
+  
+%p
+  In this phase, all the shell scripts described on the <code>03-executions.yml</code>
+  file will execute on the server.
+
+%p  
+  The scripts executed are always executed in the order they appear on the YAML file,
+  top to bottom.
+  
+%p
+  Each script can mix bash code and ruby, since they are ERB files. The scripts are 
+  always first preprocessed in StackFu and then executed. So a script like this:
+  
+  %pre
+    %code
+      :preserve
+        ufw default deny
+        &lt;% ports.split(",").each do |port| %>
+          echo "Allowing port &lt;%= port %>"
+          ufw allow &lt;%= port %> 
+        &lt;% end %>
+        yes | ufw enable
+  
+  When the user provides "22,23,25,80,8080", for instance, will first be transformed into
+  this shell script:
+  
+  %pre
+    %code
+      :preserve
+        ufw default deny
+          echo "Allowing port 22"
+          ufw allow 22
+          echo "Allowing port 23"
+          ufw allow 23
+          echo "Allowing port 25"
+          ufw allow 24
+          echo "Allowing port 80"
+          ufw allow 80
+          echo "Allowing port 8080"
+          ufw allow 8080
+        yes | ufw enable
+  
+  And then executed on the server.
+  
+%h2 Special variable <code>env_ip</code>
+
+%p
+  When the server first checks in with StackFu, we gather its public IP and save it
+  in our database. This information is useful when installing script, so it is provided
+  and can be used like if it were a user provided variable.

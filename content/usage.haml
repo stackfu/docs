@@ -1,0 +1,95 @@
+--- 
+title: Usage
+---
+
+%h2 StackFu CLI
+
+%p
+  For advanced users, the ones who know how to write shell scripts, we provide
+  a complete command line interface.
+
+%p
+  With this interface, you can create and publish scripts using the environment
+  you're used to, like your operating system, your editor and whatnot.
+  
+%p
+  In addition to that, the CLI also allows an user to check his scripts and
+  servers from the command line and also publish them if wanted.
+  
+%p
+  In order to understand how to install the CLI, check out our
+  = link 'Installation'
+  section.
+
+%h3 Commands
+
+%p
+  To get acquainted with the commands available, we use the <code>stackfu help</code>
+  command:
+  
+%pre
+  %code
+    :preserve
+      StackFu 0.1.8 - social server provisioning.
+       (c) 2010-2020 StackFu - http://stackfu.com
+
+        Usage:
+          stackfu command [arguments...] [options...]
+
+        Examples:
+          stackfu generate lamp
+          stackfu pub
+          stackfu deploy lamp server1
+
+        Commands:
+          help                         you already know about this one, dontcha?
+          config                       configure StackFu CLI options
+          list [servers|script]        lists all the scripts and/or server under your account
+          generate                     creates a new script in current_dir/name
+          dump                         dumps an existing script in current_dir/name
+          publish                      publishes the item on the current folder to StackFu.com
+
+        For a complete guide on using StackFu from command line:
+          http://docs.stackfu.com/commands/
+
+%h3 Configuring
+
+%p
+  The first time you use the StackFu CLI, it will ask your 
+  
+%pre
+  %code
+    :preserve
+      == StackFu Initial Configuration ==
+
+      It seems this is the first time you use StackFu from the command line.
+
+      To get you up to speed, we need you to provide us a couple of configuration 
+      settings that will follow.
+
+      StackFu Login: fcoury
+      StackFu Token: sadkasjdi034h1
+
+      Is this information correct? y
+
+      Configuration saved to /Users/fcoury/.stackfu
+      
+%p
+  Your token can be found by clicking the Account tab on the top right corner of the website:
+  
+%p
+  %img{ :src => '/images/token-step-01.png', :align => 'center' }
+  
+%p
+  And then clicking the Display Token option
+
+%p
+  %img{ :src => '/images/token-step-02.png', :align => 'center' }
+
+%p
+  You can easily copy it to the clipboard using the icon beside the token.
+
+%p
+  If you make any mistake or want to change your credentials, just use
+  the <code>stackfu config</code> command and you configuration will
+  be asked again.

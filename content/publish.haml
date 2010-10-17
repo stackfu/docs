@@ -1,0 +1,72 @@
+--- 
+title: Publish Command
+---
+
+%h2 Publish
+
+%p
+  The <code>publish</code> command takes a script that is in the
+  current folder and sends it to the website.
+
+%p
+  For it to work properly, you need to be in the root folder of
+  your script, the folder where <code>script.yml</code> is:
+
+%pre
+  %code
+    :preserve
+      $ pwd
+      /Users/fcoury/scripts/new_script
+
+      $ tree
+      .
+      |-- config
+      |   |-- 01-controls.yml
+      |   |-- 02-requirements.yml
+      |   |-- 03-executions.yml
+      |   `-- 04-validations.yml
+      |-- executables
+      |   |-- install.sh.erb
+      |   `-- prepare.sh.erb
+      `-- script.yml
+
+      2 directories, 7 files
+
+%p
+  From this folder, you just have to run <code>stackfu pub</code> and
+  the script will be published:
+  
+%pre
+  %code
+    :preserve
+      $ stackfu pub
+      Publishing script new_script...
+      Success: Script new_script published.
+      
+%p
+  If the script was already published before, you'll get a confirmation
+  prompt:
+  
+%pre
+  %code
+    :preserve
+      $ stackfu pub
+      You already have a script named new_script. Do you want to update it?
+      y
+
+      Tip: Next time you can avoid this question using 'stack pub --update'.
+
+      Publishing script new_script...
+      Success: Script new_script published.
+
+%p 
+  Answering <code>y</code> will update your script. However, you can avoid it
+  with the tip shown above: using the <code>--update</code> option:
+
+%pre
+  %code
+    :preserve
+      $ stackfu pub --update
+      Publishing script new_script...
+      Success: Script new_script published.
+      

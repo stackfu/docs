@@ -1,0 +1,105 @@
+--- 
+title: Create Command
+---
+
+%h2 Create
+
+%p
+  The first step to create new scripts is using the <code>create</code> command.
+  This command will create the required folder structure and prepopulate it with
+  necessary files to write your new script.
+  
+%p
+  The only mandatory parameter <code>create</code> takes is the name of the script
+  you want to create. It will try to create a new folder, under the current one, 
+  named after your script:
+  
+%pre
+  %code
+    :preserve
+      $ stackfu create new_script            
+      	create  new_script/
+      	create  new_script/script.yml
+      	create  new_script/config/
+      	create  new_script/config/01-controls.yml
+      	create  new_script/config/02-requirements.yml
+      	create  new_script/config/03-executions.yml
+      	create  new_script/config/04-validations.yml
+      	create  new_script/executables/
+      Success: Script new_script created successfully
+
+%h3 Pre generating controls and executables
+
+%p
+  The <code>create</code> command also allows you to specify controls and
+  executables that you want added to your script. This way it saves you
+  a couple of steps and prepopulates your script:
+  
+%pre
+  %code
+    :preserve
+      $ stackfu create new_script path:textbox version:radio env:combobox prepare:script 
+          install:script
+      	create  new_script/script.yml
+      	create  new_script/config/01-controls.yml
+      	create  new_script/config/02-requirements.yml
+      	create  new_script/config/03-executions.yml
+      	create  new_script/config/04-validations.yml
+      	create  new_script/executables/prepare.sh.erb
+      	create  new_script/executables/install.sh.erb
+      Success: Script new_script created successfully
+
+%p
+  If you check the file <code>01-controls.yml</code>, you'll see that the controls
+  <code>path</code>, <code>version</code> and <code>env</code> were added:
+  
+%pre
+  %code
+    :preserve
+      controls:
+
+      - name: path
+        label: Path
+        type: Textbox
+
+      - name: version
+        label: Version
+        type: Radio
+
+      - name: env
+        label: Env
+        type: Combobox
+
+%p
+  And the same happened for <code>prepare</code> and <code>install</code> scripts. 
+  They were created (<code>prepare.sh.erb</code> and <code>install.sh.erb</code>),
+  and also added to <code>03-executions.yml</code>:
+  
+%pre
+  %code
+    :preserve
+      executions: 
+
+      - description: Prepare
+        file: prepare
+
+      - description: Install
+        file: install
+
+%p
+  And here's how <code>prepare.sh.erb</code> looks like:
+
+%pre
+  %code
+    :preserve
+      # 
+      # prepare.sh
+      # Sun Oct 17 13:14:43 -0200 2010
+      #
+
+      # TODO: Replace the contents of this file with "Prepare"
+      echo [<%= Time.now %>] Installing -- Prepare
+
+%p
+  Now you just have to edit those files and adapt to your needs.
+

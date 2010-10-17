@@ -1,0 +1,37 @@
+--- 
+title: Validations
+---
+
+%h2 Validations
+
+%p
+  Validations are very similar to Requirements, with one difference:
+  they are executed after the executions are finished successfully.
+  
+%p
+  The main responsibility of validations is to make sure the environment
+  after the installation matches what was expected. If this check fails,
+  the deployment will be considered to be a failure and the user will
+  be notified properly, so he can take action.
+
+%p
+  The validations descriptor file has the following format:
+
+%pre
+  %code
+    :preserve
+      --- 
+      validations: 
+      - data: /usr/bin/my_new_program
+        type: ExecutableExists
+      - data: /etc/data/my_new_program_data.date
+        type: FileExists
+
+%p
+  Like validations, each entry has a `type` and a `data` fields. 
+  
+%p
+  For more information about the existing types of validations, check
+  the 
+  = link 'Requirements'
+  section.

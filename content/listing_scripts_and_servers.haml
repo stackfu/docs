@@ -1,0 +1,68 @@
+--- 
+title: List Command
+---
+
+%h2 List
+
+%p
+  The <code>list</code> command allows you to check which scripts
+  and servers you have under your account without visiting
+  the website.
+
+%p
+  You can specify if you want to list only scripts, only servers
+  or both (the default):
+  
+%pre
+  %code
+    :preserve
+      $ stackfu list
+      Listing 8 scripts:
+
+        Name              Description                                                                 
+        log2              Sample script to test StackFu failing installation.                         
+        firewall          Installs and configures Ubuntu Firewall (ufw)                               
+        ubuntu_firewall   Installs ufw firewall in Ubuntu                                             
+        new_script        Add your description here                                                   
+        diaspora          Installs Diaspora Preview application.                                      
+        wordpress         Installs wordpress blog engine. 
+        mongo             Installs MongoDB on Ubuntu 10.04                                            
+        mysql             Installs MySQL database server on Ubuntu.                                   
+
+      Listing 5 servers:
+
+        Name         Key                        Ip       Verified   Last Seen                              
+        local        4c8b868f7d7c421799000063   1.2.3.4  yes        5 days, 14 hours
+        sneaky       4c9256a37d7c425445000002   1.2.3.4  yes        21 days, 8 hours
+        demo         4c925d727d7c42545000009b   1.2.3.4  yes        25 days, 15 hours
+        test         4ca4ba837d7c42580e000001   1.2.3.4  yes        40 seconds ago                         
+        wcdcompany   4cb3d6bf5dc31540ab00026b   1.2.3.4  yes        34 seconds ago                         
+      
+%pre
+  %code
+    :preserve
+      $ stackfu list scripts
+      Listing 8 scripts:
+
+        Name              Description                                                                 
+        log2              Sample script to test StackFu failing installation.                         
+        firewall          Installs and configures Ubuntu Firewall (ufw)                               
+        ubuntu_firewall   Installs ufw firewall in Ubuntu                                             
+        new_script        Add your description here                                                   
+        diaspora          Installs Diaspora Preview application.                                      
+        wordpress         Installs wordpress blog engine. 
+        mongo             Installs MongoDB on Ubuntu 10.04                                            
+        mysql             Installs MySQL database server on Ubuntu.
+
+%pre
+  %code
+    :preserve
+      $ stackfu list servers
+      Listing 5 servers:
+
+        Name         Key                        Ip       Verified   Last Seen                              
+        local        4c8b868f7d7c421799000063   1.2.3.4  yes        5 days, 14 hours
+        sneaky       4c9256a37d7c425445000002   1.2.3.4  yes        21 days, 8 hours
+        demo         4c925d727d7c42545000009b   1.2.3.4  yes        25 days, 15 hours
+        test         4ca4ba837d7c42580e000001   1.2.3.4  yes        40 seconds ago                         
+        wcdcompany   4cb3d6bf5dc31540ab00026b   1.2.3.4  yes        34 seconds ago                         

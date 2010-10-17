@@ -1,0 +1,56 @@
+--- 
+title: Dump Command
+---
+
+%h2 Dump
+
+%p
+  Dumping a script will bring it from the website to your file system,
+  in a way that you can make changes and republish it afterwards.
+  
+%p
+  You can clone your own scripts but also other user's public script,
+  which gives you the ability to "clone" other scripts, make your changes,
+  and publish them live.
+
+%p
+  The dump command is quite simple. When you give it just a script name,
+  it will dump a script under your account:
+
+%pre
+  %code
+    :preserve
+      $ stackfu dump ubuntu_firewall
+        create  ubuntu_firewall/
+      	create  ubuntu_firewall/script.yml
+      	create  ubuntu_firewall/config/
+      	create  ubuntu_firewall/config/01-controls.yml
+      	create  ubuntu_firewall/config/02-requirements.yml
+      	create  ubuntu_firewall/config/03-executions.yml
+      	create  ubuntu_firewall/config/04-validations.yml
+      	create  ubuntu_firewall/executables/
+      	create  ubuntu_firewall/executables/install_ufw.sh.erb
+      	create  ubuntu_firewall/executables/configure_ufw.sh.erb
+      Success: Script ubuntu_firewall dumped.
+
+%p
+  You can also use the format <code>user/script</code> to dump another
+  user's script:
+  
+%pre
+  %code
+    :preserve
+      $ stackfu dump ctaborda/ssh_change_port
+        create  ssh_change_port/
+      	create  ssh_change_port/script.yml
+      	create  ssh_change_port/config/
+      	create  ssh_change_port/config/01-controls.yml
+      	create  ssh_change_port/config/02-requirements.yml
+      	create  ssh_change_port/config/03-executions.yml
+      	create  ssh_change_port/config/04-validations.yml
+      	create  ssh_change_port/executables/
+      	create  ssh_change_port/executables/change_ssh_port.sh.erb
+      Success: Script ctaborda/ssh_change_port dumped.
+      
+In this case I dumped ctaborda's script called <code>change_ssh_port</code>.
+
