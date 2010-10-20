@@ -1,0 +1,193 @@
+--- 
+title: Testing Scripts
+---
+
+%h2 Testing Scripts
+
+%p
+  So now is the time to get creative. You can learn how to create a script by reading
+  our #{link 'Quick Start'} page, or the #{link 'Writing Scripts', '/intro/'} sections
+  if you want more detailed information.
+
+%p
+  For the purpose of illustrating script testing, we're going to create a simple script,
+  that takes one parameter and, depending on the value of that parameter, we'll force
+  the installation to succeed or fail.
+  
+%h3 Creating the script
+
+%p
+  Make sure you have #{link 'installed the StackFu RubyGem', '/installation/'} before and
+  run the following command:
+  
+%pre
+  %code
+    :preserve
+      stackfu create mysql_sample install_mysql:script
+      	create  mysql_sample/script.yml
+      	create  mysql_sample/config/01-controls.yml
+      	create  mysql_sample/config/02-requirements.yml
+      	create  mysql_sample/config/03-executions.yml
+      	create  mysql_sample/config/04-validations.yml
+      	create  mysql_sample/executables/install_mysql.sh.erb
+      Success: Script mysql_sample created successfully
+      
+%p
+  Now go into the <code>mysql_sample</code> folder and edit the <code>script.yml</code> file:
+  
+%pre
+  %code
+    :preserve
+      --- 
+      type: script
+      name: "mysql_sample"
+      description: "Installs MySQL using Aptitude in Ubuntu"
+      tags: ['mysql', 'database', 'aptitude', 'ubuntu']
+      
+%p
+  Edit <code>config/01-controls.yml</code> since we won't need any controls for this script:
+
+%pre
+  %code
+    :preserve
+      controls: []
+      
+%p
+  And also edit the <code>executable/install_mysql.sh.erb</code> file:
+
+%pre
+  %code
+    :preserve
+      # 
+      # install_mysql.sh
+      # Tue Oct 19 22:54:19 -0200 2010
+      #
+
+      # TODO: Replace the contents of this file with "Install Mysql"
+      echo [<%= Time.now %>] Installing -- Install Mysql
+
+      # installs mysql
+      DEBIAN_FRONTEND=noninteractive apt-get -y -qq install mysql
+
+%h3 Publishing it
+
+%p
+  Let's publish our newly created script:
+  
+%pre
+  %code
+    :preserve
+      $ stackfu publish
+      Publishing script mysql_sample...
+      Success: Script mysql_sample published.
+
+%h3 Testing
+
+%p
+  Now, go back to StackFu and you should see a new Activity Log in your main page:
+
+%p
+  %img{ :src => '/images/testing-01.png' }
+
+%p
+  Click the link #{"<b>your-username/mysql_sample</b>"} and you'll be redirected to
+  the script page:
+
+%p
+  %img{ :src => '/images/testing-02.png' }
+
+%p
+  Now let's deploy this script to our local Virtual Machine. Click #{'<b>Deploy this script</b>'}
+  and go to the deploy page:
+  
+%p
+  %img{ :src => '/images/testing-03.png' }
+
+%p
+  Select the #{'<b>sandbox</b>'} server you created earlier and finally click #{b 'DEPLOY'}. The 
+  deployment page will be rendered:
+
+%p
+  %img{ :src => '/images/testing-04.png' }
+
+%p
+  The deployment will start:
+  
+%p
+  %img{ :src => '/images/testing-05.png' }
+
+%p
+  And eventually it will fail:
+  
+%p
+  %img{ :src => '/images/testing-06.png' }
+
+%p
+  It seems we used the wrong package name. It's not <code>mysql</code>, but <code>mysql-server</code>.
+  Let's perform the fix in <code>script/install_mysql.sh.erb</code>:
+  
+%pre
+  %code
+    :preserve
+      # 
+      # install_mysql.sh
+      # Tue Oct 19 22:54:19 -0200 2010
+      #
+
+      # TODO: Replace the contents of this file with "Install Mysql"
+      echo [<%= Time.now %>] Installing -- Install Mysql
+
+      # installs mysql
+      DEBIAN_FRONTEND=noninteractive apt-get -y -qq install mysql-server
+
+%p
+  And republish the script:
+  
+%pre
+  %code
+    :preserve
+      $ stackfu publish              
+      You already have a script named mysql_sample. Do you want to update it?
+      y
+
+      Tip: Next time you can avoid this question using 'stack pub --update'.
+
+      Publishing script mysql_sample...
+      Success: Script mysql_sample published.
+
+%p
+  Finally, let's try deploying again by following the same previous steps. This time it
+  will work:
+  
+%p
+  %img{ :src => '/images/testing-07.png' }
+
+.hint
+  #{b 'IMPORTANT:'} This is not the correct way to install MySQL Server from a script.
+  If you want to do that properly, take a look at the 
+  #{link b('fcoury/mysql'), 'https://beta.stackfu.com/fcoury/mysql'} script.
+
+%br/
+  
+%h3
+  Resetting the Virtual Machine
+
+%p
+  Every time you mess up the installation, you can redeploy your virtual machine. Just
+  exit from SSH, delete your server from StackFu and start over.
+
+%p
+  Destroy and restart the virtual machine:
+  
+%pre
+  %code
+    :preserve
+      $ vagrant destroy
+      $ vagrant up
+
+%p
+  And start again by adding the new server.
+
+%p
+  Now that you learned how to create and test scripts, go write some code and
+  contribute!
