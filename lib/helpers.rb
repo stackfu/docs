@@ -31,3 +31,12 @@ def stylesheet_link_tag(*sources)
   end
   content.join("\n")
 end
+
+def vagrant(image)
+  url = "http://files.vagrantup.com/#{image}"
+  link url, url
+end
+
+def b(s)
+  "<b>#{s}</b>"
+end

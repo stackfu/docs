@@ -1,0 +1,73 @@
+--- 
+title: Provisioning
+---
+
+%h2 Provisioning
+
+%p
+  Now we need now to install a Vagrant box (or OS image) we will be using. Here are the available 
+  images to date:
+
+<%= table(
+	:headers => ["Image", "Vagrant Box Link"],
+	:contents => <<-EOS
+Ubuntu 10.04.1 32-bit (Lucid Lynx) | #{vagrant("lucid32.box")}
+Ubuntu 10.04.1 64-bit (Lucid Lynx) | #{vagrant("lucid64.box")}
+Ubuntu 9.10 64-bit (Karmic Koala) | #{vagrant("contrib/karmic.box")}
+Debian 5.0.6 (Lenny) | #{vagrant("contrib/debian_lenny.box")}
+EOS
+)%>
+
+%p
+  Now let's create a folder for Vagrant setup. Here I'll use a folder inside
+  my home folder, because I am using Mac OS X. If you're using Windows, be sure to 
+  adapt this. 
+
+%p
+  After creating the folder, choose an image that best suits you and install it. Let's 
+  say we want to use Ubuntu 10.04.1 64-bit:
+  
+%pre
+  %code
+    :preserve
+      $ mkdir ~/vagrant && cd ~/vagrant
+      $ vagrant box add lucid64 http://files.vagrantup.com/lucid64.box
+      $ vagrant init lucid64
+      $ vagrant up
+
+%p
+  This will boot your box. You'll see some progress messages while it boots:
+  
+%pre
+  %code
+    :preserve
+      $ vagrant up
+      [default] Creating VM 'default'
+      [default] Importing base VM (/Users/fcoury/.vagrant/boxes/base/box.ovf)
+      [progress] default: 78%
+%p
+
+  And then finally:
+  
+%pre
+  %code
+    :preserve
+      [default] Creating VM 'default'
+      [default] Importing base VM (/Users/fcoury/.vagrant/boxes/base/box.ovf)
+      [default] Persisting the VM UUID (5dbd9da7-7ae8-47a1-ae6f-fa294248c82a)
+      [default] Matching MAC addresses...
+      [default] Deleting any previously set forwarded ports...
+      [default] Forwarding ports...
+      [default] Forwarding "ssh": 22 on adapter #1 => 2222
+      [default] Creating shared folders metadata...
+      [default] Booting VM...
+      [default] Waiting for VM to boot...
+      [default] Trying to connect (attempt #1 of 10)...
+      [default] Trying to connect (attempt #2 of 10)...
+      [default] VM booted and ready for use!
+      [default] Mounting shared folders...
+      [default] -- v-root: /vagrant
+
+%p
+  With this, your box should be running. Let's 
+  #{link 'install the StackUp utility', '/installing_stackup/'}.

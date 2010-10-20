@@ -1,0 +1,33 @@
+--- 
+title: Sandboxing Setup
+---
+
+%h3 Installing Requirements
+  
+%p
+  First step to setup a sandbox environment is downloading and installing VirtualBox.
+  Head over to the #{link 'VirtualBox download page', 'http://www.virtualbox.org/wiki/Downloads'}
+  and get the version that suits your operating system.
+
+%p
+  The installation uses a Wizard and it's quite straightforward (here are some screenshots of the
+  process on a Mac OS X computer):
+
+%p{ :align => 'center' }
+  %img{ :src => '/images/sandbox-virtualbox-01.png' }
+  
+%h3 Installing Vagrant RubyGem
+  
+%p
+  Once you have VirtualBox installed, let's install Vagrant:
+
+%pre
+  %code
+    :preserve
+      $ gem install vagrant               
+      Successfully installed net-scp-1.0.4
+      Successfully installed vagrant-0.6.6
+      2 gems installed
+      
+%p
+  When it finishes installing, let's start #{link 'provisioning our environment', '/provisioning/'}.

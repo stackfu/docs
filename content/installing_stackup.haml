@@ -1,0 +1,72 @@
+--- 
+title: Installing StackUp
+---
+
+%h2 Installing StackUp
+
+%p
+  StackUp is the utility that runs on your server &#8212; either as a daemon or as standalone &#8212;, 
+  and that's what receive the installation instructions and perform them on your server.
+
+%p
+  First step is to SSH into the Vagrant box you created:
+  
+%pre
+  %code
+    :preserve
+      $ vagrant ssh
+      Warning: Permanently added '[localhost]:2222' (RSA) to the list of known hosts.
+      Linux vagrantup 2.6.32-24-generic-pae #39-Ubuntu SMP Wed Jul 28 07:39:26 
+      UTC 2010 i686 GNU/Linux
+      Ubuntu 10.04.1 LTS
+
+      Welcome to Ubuntu!
+       * Documentation:  https://help.ubuntu.com/
+      Last login: Wed Aug 11 17:42:46 2010
+      vagrant@vagrantup:~$
+      
+%p
+  Now we can follow the instructions on the server page, but before, let's make sure
+  our Aptitude package repositories are up-to-date:
+  
+%pre
+  %code
+    :preserve
+      vagrant@vagrantup:~$ sudo apt-get update
+
+%p
+  Now run the <code>wget</code> command with <code>sudo</code>:
+  
+%pre
+  %code
+    :preserve
+      vagrant@vagrantup:~$ sudo bash -c "`wget -O - up.stackfu.com`"
+      
+%p
+  And then the installation should start:
+  
+%pre
+  %code
+    :preserve
+      StackFu StackUp! Installer
+       (c) 2009-2020 StackFu - http://stackfu.com
+
+      Install stackup as a deamon or standalone?
+      (choose daemon if you don't know what you want)
+      Enter d=daemon / s=standalone [d]:
+
+%p
+  Just follow the instructions on the #{"<b>Server</b>"} page. 
+  
+%p{ :align => 'center' }
+  %img{ :src => '/images/stackup-05.png' }
+
+%p
+  Once it's completed, you should see the page change and inform that 
+  the server was verified:
+  
+%p{ :align => 'center' }
+  %img{ :src => '/images/stackup-04.png' }
+
+%p
+  You're now ready to #{link 'test your scripts', '/testing_scripts/'}.

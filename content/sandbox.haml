@@ -1,0 +1,33 @@
+--- 
+title: What is a Sandbox?
+---
+
+%h2 What is a Sandbox?
+
+%p
+  So you created an amazing script but how will you test it? You obviously doesn't
+  want to mess up a live server only to test your scripts and you will need to
+  install it a couple of times until it's perfect right?
+  
+%p
+  That's where a sandbox server can be useful. We'll create a Virtual Machine in
+  your local machine that is completely disposable. This way you can install your
+  script over and over, until it's perfect for mass consumption.
+  
+%h3 Meet Vagrant
+  
+%p{ :align => 'center' }
+  %table{ :align => 'center'}
+    %tr
+      %td{ :align => 'right' }
+        %img{ :src => '/images/vagrant_chilling.png' }
+      %td
+        %img{ :src => '/images/vagrant-logo.png' }
+
+%p
+  For this task, we'll use an amazing tool, called #{link 'Vagrant', 'http://vagrantup.com/'}, 
+  that can help us running a virtualized VirtualBox environment locally, so we can play with
+  our scripts.
+
+%p
+  But first, let's #{link 'create a new server', '/creating_the_server/'} in StackFu.
