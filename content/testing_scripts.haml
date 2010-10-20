@@ -44,14 +44,16 @@ title: Testing Scripts
       description: "Installs MySQL using Aptitude in Ubuntu"
       tags: ['mysql', 'database', 'aptitude', 'ubuntu']
       
-Edit <code>config/01-controls.yml</code> since we won't need any controls for this script:
+%p
+  Edit <code>config/01-controls.yml</code> since we won't need any controls for this script:
 
 %pre
   %code
     :preserve
       controls: []
       
-And also edit the <code>executable/install_mysql.sh.erb</code> file:
+%p
+  And also edit the <code>executable/install_mysql.sh.erb</code> file:
 
 %pre
   %code
@@ -144,7 +146,12 @@ And also edit the <code>executable/install_mysql.sh.erb</code> file:
 %pre
   %code
     :preserve
-      $ stackfu publish --update
+      $ stackfu publish              
+      You already have a script named mysql_sample. Do you want to update it?
+      y
+
+      Tip: Next time you can avoid this question using 'stack pub --update'.
+
       Publishing script mysql_sample...
       Success: Script mysql_sample published.
 
@@ -153,12 +160,33 @@ And also edit the <code>executable/install_mysql.sh.erb</code> file:
   will work:
   
 %p
-  %img{ :src => '/images/testing-06.png' }
+  %img{ :src => '/images/testing-07.png' }
 
 .hint
   #{b 'IMPORTANT:'} This is not the correct way to install MySQL Server from a script.
   If you want to do that properly, take a look at the 
   #{link b('fcoury/mysql'), 'https://beta.stackfu.com/fcoury/mysql'} script.
+
+%br/
+  
+%h3
+  Resetting the Virtual Machine
+
+%p
+  Every time you mess up the installation, you can redeploy your virtual machine. Just
+  exit from SSH, delete your server from StackFu and start over.
+
+%p
+  Destroy and restart the virtual machine:
+  
+%pre
+  %code
+    :preserve
+      $ vagrant destroy
+      $ vagrant up
+
+%p
+  And start again by adding the new server.
 
 %p
   Now that you learned how to create and test scripts, go write some code and
